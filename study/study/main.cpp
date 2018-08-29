@@ -9,6 +9,8 @@
 
 extern void completeMap(int N, char map[MAX_MAP_SIZE][MAX_MAP_SIZE]);
 
+void allmapPrint(int N, char(*map)[64]);
+
 static char map[MAX_MAP_SIZE][MAX_MAP_SIZE];
 static int N;
 static unsigned int seed;
@@ -41,7 +43,7 @@ static bool isCorrect(char cmp[MAX_MAP_SIZE][MAX_MAP_SIZE]) {
     {
         for (int x = 0; x < N; x++)
         {
-            //printf("%d\t", cmp[y][x]); 
+            //printf("%d\t", cmp[y][x]);
             if (map[y][x] != cmp[y][x])
                 return false;
         }
@@ -50,6 +52,20 @@ static bool isCorrect(char cmp[MAX_MAP_SIZE][MAX_MAP_SIZE]) {
     //printf("==============================\n");
 
     return true;
+}
+
+void allmapPrint2(int N, char(*a)[64])
+{
+	printf("기본 상태 \n");
+	for (int row = 0; row < N; row++)
+	{
+		for (int col = 0; col < N; col++)
+		{
+			printf("%d ", a[row][col]);
+		}
+		printf("\n");
+	}
+	printf("\n\n");
 }
 
 int main() {
@@ -88,6 +104,10 @@ int main() {
         totaluse += usingCameraCnt;
 
         printf("#%d %d\n", tc, score);
+
+
+		//allmapPrint2(N, incompletion);
+		//allmapPrint2(N, map);
     }
 
     if (totaluse > MAX_COUNT * TC)
@@ -97,3 +117,4 @@ int main() {
 
     return 0;
 }
+
